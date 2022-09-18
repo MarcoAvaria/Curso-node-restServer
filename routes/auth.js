@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { check } from 'express-validator';
-import { login } from '../controllers/auth.js';
+import { googleSingIn, login } from '../controllers/auth.js';
 import { validarCampos } from '../middlewares/validar-campos.js';
 
 const router2 = Router();
@@ -10,6 +10,11 @@ router2.post('/login', [
     check('password', 'La constraseña es obligatoria').not().isEmpty(),
     validarCampos
 ], login);
+
+router2.post('/google', [
+    check('id_token', 'id_token es necesario').not().isEmpty(),
+    validarCampos
+], googleSingIn);
 
 export {
     router2
