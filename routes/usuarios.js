@@ -2,6 +2,9 @@ import { Router } from 'express';
 import { check } from 'express-validator';
 
 import { validarCampos } from '../middlewares/validar-campos.js';
+import { validarJWT } from '../middlewares/validar-jwt.js';
+import { esAdminRole, tieneRole } from '../middlewares/validar-roles.js';
+
 import { 
     emailExiste,
     esRoleValido, 
@@ -46,6 +49,9 @@ router.post('/',[
 router.patch('/', usuariosPatch);
 
 router.delete('/:id',[
+    validarJWT,
+    //esAdminRole,
+    tieneRole( 'ADMIN_ROLE', 'VENTAS_ROLE', 'OTRO_ROLE' ),
     check('id').custom( existeUsuarioPorId ), // Aquí se realizan las dos validaciones
     validarCampos
 ], usuariosDelete);
