@@ -46,8 +46,6 @@ router.post('/',[
 
 ], usuariosPost);
 
-router.patch('/', usuariosPatch);
-
 router.delete('/:id',[
     validarJWT,
     //esAdminRole,
@@ -55,5 +53,7 @@ router.delete('/:id',[
     check('id').custom( existeUsuarioPorId ), // Aquí se realizan las dos validaciones
     validarCampos
 ], usuariosDelete);
+
+router.patch('/', usuariosPatch);
 
 export { router };

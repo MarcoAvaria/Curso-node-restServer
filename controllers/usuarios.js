@@ -34,7 +34,6 @@ const usuariosPost = async (req, res = response) => {
     usuario.password = bcryptjs.hashSync( password, salt);
 
     // Guardar en BD
-
     await usuario.save();
     
     res.json({
@@ -82,8 +81,8 @@ const usuariosDelete = async(req, res = response) => {
 
 export{
     usuariosGet,
-    usuariosPut,
     usuariosPost,
+    usuariosPut,
     usuariosPatch,
     usuariosDelete
 }

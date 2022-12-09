@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import fileUpload from 'express-fileupload';
-//const app = express();
+
 import { router } from '../routes/usuarios.js';
 import { router2 } from '../routes/auth.js';
 import { router3 } from '../routes/categorias.js';
@@ -13,6 +13,9 @@ import { dbConnection } from '../database/config.js';
 class Server {
 
     constructor() {
+
+        //Aquí lo que se hace es: al crear una instancia del servidor se va a crear la aplicación de Express
+        // como una propiedad en la misma clase server.js
         this.app = express();
         this.port = process.env.PORT;
 
@@ -38,10 +41,10 @@ class Server {
     async conectarDB() {
         await dbConnection();
     }
-
+    //Son otras "funciones" que añaden "funcionalidad" al webserver, se ejecutará cada vez que se levanta el server
     middlewares() {
 
-        // CORS
+        // CORS: Permite proteger al servidor "superficialmente"
         this.app.use( cors() );
         
         // Lectura y parseo del body
@@ -59,6 +62,7 @@ class Server {
         }));
     }
 
+    //Aquí se está creando un método de la clase server, donde se definen las rutas
     routes() {
         this.app.use( this.paths.auth, router2);
         this.app.use( this.paths.buscar, router5)

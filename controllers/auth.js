@@ -5,6 +5,9 @@ import bcryptjs from 'bcryptjs';
 import { Usuario } from '../models/usuario.js';
 import { generarJWT } from '../helpers/generar-jwt.js';
 import { googleVerify } from '../helpers/google-verify.js';
+import { Condominio } from '../models/condominio.js';
+import { Propiedad } from '../models/propiedad.js';
+import { Propietario } from '../models/propietario.js';
 
 
 const login = async(req, res = response) => {
