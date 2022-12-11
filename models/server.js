@@ -17,7 +17,7 @@ class Server {
         //Aquí lo que se hace es: al crear una instancia del servidor se va a crear la aplicación de Express
         // como una propiedad en la misma clase server.js
         this.app = express();
-        this.port = process.env.PORT;
+        this.port = process.env.PORT || 3000;
 
         this.paths = {
             auth:       '/api/auth',
