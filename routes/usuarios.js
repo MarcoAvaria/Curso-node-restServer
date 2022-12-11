@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { check } from 'express-validator';
+import { check } from 'express-validator'; // Este check es un middleware se ocupa para las validaciones a revisar 
 
 import { validarCampos } from '../middlewares/validar-campos.js';
 import { validarJWT } from '../middlewares/validar-jwt.js';
@@ -29,7 +29,8 @@ router.get('/', usuariosGet);
 // ], usuariosPut);
 
 router.put('/:id', [
-    check('id').custom( existeUsuarioPorId ), // Aquí se realizan las dos validaciones
+    check('id', 'No es un ID válido').isMongoId(),
+    check('id').custom( existeUsuarioPorId ), 
     check('rol').custom( esRoleValido ),
     validarCampos
 ], usuariosPut);
@@ -50,6 +51,7 @@ router.delete('/:id',[
     validarJWT,
     //esAdminRole,
     tieneRole( 'ADMIN_ROLE', 'VENTAS_ROLE', 'OTRO_ROLE' ),
+    check('id', 'No es un ID válido').isMongoId(),
     check('id').custom( existeUsuarioPorId ), // Aquí se realizan las dos validaciones
     validarCampos
 ], usuariosDelete);

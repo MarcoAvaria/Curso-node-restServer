@@ -21,18 +21,13 @@ const emailExiste = async ( correo = '') => {
 }
 
 const existeUsuarioPorId = async ( id ) => {
-    // const existeUsuario = await Usuario.findById(id);
-    // if( !existeUsuario ){
-    //     throw new Error(`El id: ${ id }, no existe`);
-    // }
+
     if (id.match(/^[0-9a-fA-F]{24}$/)) {
         const existeUsuario = await Usuario.findById( id ).exec();
         if ( !existeUsuario ) {
             throw new Error(`El id ${ id } no existe`);
         }
-    } else {
-        throw new Error(`${ id } no es un ID válido`);
-    }
+    } 
 }
 
 const existeCategoriaPorId = async (id) => {

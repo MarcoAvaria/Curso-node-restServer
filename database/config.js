@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+//Mongoose es un ODM (Object Data Modeling), que es como un modelador de objetos de información que
+// se grabará en la base de datos, facilitanto query, lecturas y otras acciones/manipulaciones
 
 const dbConnection = async() => {
 

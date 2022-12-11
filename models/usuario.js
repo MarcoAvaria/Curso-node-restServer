@@ -34,7 +34,8 @@ const UsuarioSchema = Schema({
     }
 });
 
-
+//... Acá se sobreescribe el método "toJSON", debe ser una función "normal", es decir, debe ocuparse el
+// "this"... ya que una función de flecha mantiene a lo que apunta al "this" fuera de la instancia creada
 
 UsuarioSchema.methods.toJSON = function() {
     const { __v, password, _id, ...usuario } = this.toObject();
