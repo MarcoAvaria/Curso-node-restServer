@@ -5,10 +5,6 @@ import bcryptjs from 'bcryptjs';
 import { Usuario } from '../models/usuario.js';
 import { generarJWT } from '../helpers/generar-jwt.js';
 import { googleVerify } from '../helpers/google-verify.js';
-import { Condominio } from '../models/condominio.js';
-import { Propiedad } from '../models/propiedad.js';
-import { Propietario } from '../models/propietario.js';
-
 
 const login = async(req, res = response) => {
 
@@ -61,13 +57,13 @@ const googleSingIn = async( req, res = response) => {
     const { id_token } = req.body;
 
     try {
-        
+
         const { correo, nombre, img} = await googleVerify( id_token );
 
         let usuario = await Usuario.findOne({ correo });
 
         if( !usuario ){
-            // Tengo que crearlo
+            // Si el usuario no existe, se crea
             const data = {
                 nombre,
                 correo,
@@ -80,10 +76,10 @@ const googleSingIn = async( req, res = response) => {
             await usuario.save();
         }
         
-        // Si el usuario en DB 
+        // Si el usuario existe en DB 
         if ( !usuario.estado ) {
             return res.status(401).json({
-                msg: 'Hable con el administrador, usuario bloqueado'
+                msg: 'Hable con el administrador, usuario bloqueado/eliminado'
             });
         }
 
