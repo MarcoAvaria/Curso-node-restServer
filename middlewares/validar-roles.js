@@ -18,7 +18,7 @@ const esAdminRole = (req = require, res = response, next) => {
 
     next();
 }
-
+// En vez de colocar "rol1, rol2, rol3..." se ocupa el operador Rest ...
 const tieneRole = ( ...roles ) => {    
     return (req = request, res = response, next) => {
 

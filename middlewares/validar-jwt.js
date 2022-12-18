@@ -44,11 +44,7 @@ const validarJWT = async ( req = request, res = response, next ) => {
             msg: 'Token no válido'
         })
     }
-
-
-
 }
-
 
 export {
     validarJWT

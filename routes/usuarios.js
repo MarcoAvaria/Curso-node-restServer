@@ -1,9 +1,12 @@
 import { Router } from 'express';
 import { check } from 'express-validator'; // Este check es un middleware se ocupa para las validaciones a revisar 
 
-import { validarCampos } from '../middlewares/validar-campos.js';
-import { validarJWT } from '../middlewares/validar-jwt.js';
-import { esAdminRole, tieneRole } from '../middlewares/validar-roles.js';
+import  {
+    validarCampos,
+    validarJWT,
+    esAdminRole,
+    tieneRole
+} from '../middlewares/index.js'
 
 import { 
     emailExiste,
