@@ -35,9 +35,9 @@ const buscarUsuarios = async( termino = '', res = response ) => {
                 results: []
             });
         }                
-    } else {
-        const regex = new RegExp( termino, 'i');
-        const usuarios = await Usuario.find({
+    } else { //Se crea una "expresión regular" RegExp, propio de JavaScript, que en esta caso es termino
+        const regex = new RegExp( termino, 'i'); //la 'i' significa "insensible a las mayúsculas"
+        const usuarios = await Usuario.find({ //en "find" hay propiedades propias de Mongo, con el caracter '$'
             $or: [{ nombre: regex }, { correo: regex}],
             $and: [{ estado: true }]
         });

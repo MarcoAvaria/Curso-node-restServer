@@ -1,13 +1,13 @@
-import Categoria from "./categoria.js";
-import Role from "./role.js";
-import Server from "./server.js";
-import Usuario from "./usuario.js";
-import Producto from "./producto.js";
+export { Categoria } from "./categoria.js";
+export { Role } from "./role.js";
+export { Server } from "./server.js";
+export { Usuario } from "./usuario.js";
+export { Producto } from "./producto.js";
 
-export {
-    Categoria,
-    Producto,
-    Role,
-    Server,
-    Usuario
-}
+// export {
+//     Categoria,
+//     Producto,
+//     Role,
+//     Server,
+//     Usuario
+// }

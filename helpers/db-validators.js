@@ -31,18 +31,18 @@ const existeUsuarioPorId = async ( id ) => {
 }
 
 const existeCategoriaPorId = async (id) => {
-    // const existeCategoria = await Categoria.findById(id);
-    // if ( !existeCategoria ) {
-    //     throw new Error(`El id: ${ id } no existe`)
-    // }
-    if (id.match(/^[0-9a-fA-F]{24}$/)) {
-        const existeCategoria = await Categoria.findById( id ).exec();
-        if ( !existeCategoria ) {
-            throw new Error(`El id ${ id } no existe`);
-        }
-    } else {
-        throw new Error(`${ id } no es un ID válido`);
+    const existeCategoria = await Categoria.findById(id);
+    if ( !existeCategoria ) {
+        throw new Error(`El id: ${ id } no existe`)
     }
+    // if (id.match(/^[0-9a-fA-F]{24}$/)) {
+    //     const existeCategoria = await Categoria.findById( id ).exec();
+    //     if ( !existeCategoria ) {
+    //         throw new Error(`El id ${ id } no existe`);
+    //     }
+    // } else {
+    //     throw new Error(`${ id } no es un ID válido`);
+    // }
 }
 
 const existeProductoPorId = async (id) => {

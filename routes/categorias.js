@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { check } from 'express-validator';
 import { validarJWT } from '../middlewares/validar-jwt.js';
-import { validarCampos } from '../middlewares/validar-campos.js';
+import { validarCampos } from '../middlewares/index.js';
 import { esAdminRole } from '../middlewares/validar-roles.js';
 import { crearCategoria,
          obtenerCategorias,
@@ -29,6 +29,7 @@ router3.get('/:id', [
 // Crear categoria - privado - cualquier persona con un token válido
 router3.post('/', [
     validarJWT,
+    esAdminRole,
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     validarCampos
 ], crearCategoria );
@@ -36,6 +37,7 @@ router3.post('/', [
 // Actualizar - privado - cualquier persona con un token válido
 router3.put('/:id', [
     validarJWT,
+    esAdminRole,
     check( 'nombre', 'El nombre es obligatorio' ).notEmpty(),
     check( 'id' ).custom( existeCategoriaPorId ),
     validarCampos

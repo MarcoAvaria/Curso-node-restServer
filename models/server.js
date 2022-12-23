@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import fileUpload from 'express-fileupload';
 
-import { router } from '../routes/usuarios.js';
+import { router1 } from '../routes/usuarios.js';
 import { router2 } from '../routes/auth.js';
 import { router3 } from '../routes/categorias.js';
 import { router4 } from '../routes/productos.js';
@@ -67,7 +67,7 @@ class Server {
         this.app.use( this.paths.auth, router2);
         this.app.use( this.paths.buscar, router5)
         this.app.use( this.paths.categorias, router3);
-        this.app.use( this.paths.usuarios, router);
+        this.app.use( this.paths.usuarios, router1);
         this.app.use( this.paths.productos, router4)
         this.app.use( this.paths.uploads, router6)
     }

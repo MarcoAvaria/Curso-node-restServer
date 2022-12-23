@@ -20,9 +20,9 @@ import {
     usuariosPut,
     usuariosPatch } from '../controllers/usuarios.js';
 
-const router = Router();
+const router1 = Router();
 
-router.get('/', usuariosGet);
+router1.get('/', usuariosGet);
 
 // router.put('/:id',[
 //     check('id', 'No es un ID válido').isMongoId(),
@@ -31,14 +31,14 @@ router.get('/', usuariosGet);
 //     validarCampos
 // ], usuariosPut);
 
-router.put('/:id', [
+router1.put('/:id', [
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom( existeUsuarioPorId ), 
     check('rol').custom( esRoleValido ),
     validarCampos
 ], usuariosPut);
 
-router.post('/',[
+router1.post('/',[
     
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('password', 'El password debe tener más de 6 letras').isLength({ min: 6 }),
@@ -50,7 +50,7 @@ router.post('/',[
 
 ], usuariosPost);
 
-router.delete('/:id',[
+router1.delete('/:id',[
     validarJWT,
     //esAdminRole,
     tieneRole( 'ADMIN_ROLE', 'VENTAS_ROLE', 'OTRO_ROLE' ),
@@ -59,6 +59,6 @@ router.delete('/:id',[
     validarCampos
 ], usuariosDelete);
 
-router.patch('/', usuariosPatch);
+router1.patch('/', usuariosPatch);
 
-export { router };
+export { router1 };
